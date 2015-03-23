@@ -1,15 +1,15 @@
 ﻿properties {
-    $ProductName = "NLog.Targets.Gelf"
+    $ProductName = "NLog.Targets.Gelf (Bundle)"
     $BaseDir = Resolve-Path "."
     $SolutionFile = "$BaseDir\NLog.Targets.Gelf.sln"
     $OutputDir = "$BaseDir\Deploy\Package\"
     # Gets the number of commits since the last tag. 
-    $Version = "0.2.1.0"
+    $Version = "0.2.2.0"
     $BuildConfiguration = "Release"
     
-    $NuGetPackageName = "NLog.Targets.Gelf"
+    $NuGetPackageName = "NLog.Targets.Gelf-Bundle"
     $NuGetPackDir = "$OutputDir" + "Pack"
-    $NuSpecFileName = "NLog.Targets.Gelf.nuspec"
+    $NuSpecFileName = "NLog.Targets.Gelf-Bundle.nuspec"
     $NuGetPackagePath = "$OutputDir" + $NuGetPackageName + "." + $Version + ".nupkg"
     
     $ArchiveDir = "$OutputDir" + "Archive"
