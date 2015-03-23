@@ -13,6 +13,7 @@
     $NuGetPackagePath = "$OutputDir" + $NuGetPackageName + "." + $Version + ".nupkg"
     
     $ArchiveDir = "$OutputDir" + "Archive"
+    $ToolsDir = "$BaseDir\Tools"
 }
 
 Framework '4.0'
@@ -35,7 +36,11 @@ task Build -depends Init,Clean {
     exec { msbuild $SolutionFile "/p:OutDir=$OutputDir" "/p:Configuration=$BuildConfiguration" }
 }
 
-task Pack -depends Build {
+task ILRepack -depends Build {
+    exec { & "$ToolsDir\ILRepack.exe" /t:library /log /internalize /out:$OutputDir\NLog.Targets.Gelf.dll $OutputDir\NLog.Targets.Gelf.dll $OutputDir\Newtonsoft.Json.dll $OutputDir\NLog.dll}
+}
+
+task Pack -depends ILRepack {
     mkdir $NuGetPackDir
     cp "$NuSpecFileName" "$NuGetPackDir"
 
